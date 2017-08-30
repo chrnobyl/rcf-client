@@ -12,7 +12,7 @@ function setFormSubmitAction(){
     event.preventDefault()
     const zip = $('input[name = zip]').val()
     const category = $('select[name = complaint-category]').val()
-    const url = `https://rats-api.herokuapp.com/api/v1/complaints/search?zip_code=${zip}&complaint_type=${category}`
+    const url = `https://data.cityofnewyork.us/resource/fhrw-4uyv.json?$where=complaint_type=${category}&incident_zip=${zip}`
 
     $.ajax({
       url: url,
