@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>311 Health/Hygiene Stats Quiz/Fun Stuff (2017)</title>
+  </head>
+  <html>
+  <head>
+  <title>Popular Complaints</title>
+  <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+  <script type="text/javascript" src="http://static.fusioncharts.com/code/latest/themes/fusioncharts.theme.fint.js?cacheBust=56"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script>
+    var chartData
+    $.ajax({
+      url: 'http://localhost:3000/api/v1/complaints/grouped',
+      success : function(data){
+          readyChart(data)
+        }
+      })
+      function readyChart(chartData){
+      FusionCharts.ready(function(){
+        var fusioncharts = new FusionCharts({
+          type: 'pie2d',
+          renderAt: 'chart-container',
+          width: '900',
+          height: '600',
+          dataFormat: 'json',
+          dataSource: {
+              "chart": {
+                  "caption": "Popular DHMH Complaints",
+                  "subCaption": "2017",
+                  "numberPrefix": "",
+                  "showPercentInTooltip": "1",
+                  "decimals": "1",
+                  "useDataPlotColorForLabels": "1",
+                  //Theme
+                  "theme": "fint"
+                },
+              "data": chartData
+            }
+        })
+        fusioncharts.render();
+      })
+    }
+  </script>
+  </head>
+  <body style="background-image: linear-gradient(to bottom, rgba(255,255,255,0.5) 0%,rgba(255,255,255,0.9) 100%), url('http://i.imgur.com/genSSjX.jpg'); background-size: contain;">
+    <div class='container'>
+      <h1 class="center-align">311 Stats and Fun Stuff</h1>
+    </div>
+    <div class = 'row' >
+      <div class = 'col s8'>
+        <h4 class='left-align'>How many complaints have there been (so far)? </h4>
+      </div>
+    </div>
+    <div class = 'row'>
+      <div class = 'col s2'>
+        <form id= 'total_complaints'>
+        <input type='number' placeholder='total complaints' name="tcomplaints" style="background-color: white" />
+        <button id= 'butt1' class="btn waves-effect waves-light" type="submit" name="action">How many whiners?
+           <i class="material-icons right"></i>
+         </button>
+      </div>
+      <div class='col s6 offset-s1'>
+            <div id= 'ans1Desc'>
+            </div>
+            <div id= 'ans1'>
+        </div>
+      </div>
+    </div>
+
+    <div class='row'>
+      <h4>What borough complains the most? </h4>
+      <div class='col s2'>
+      <form id='boro_complaints'>
+      <input type='text' placeholder='borough complaints' name="bcomplaints" style="background-color: white"/>
+      <button id= 'butt2' class="btn waves-effect waves-light" type="submit" name="action"> Who?
+         <i class="material-icons right"></i>
+       </button>
+
+      </form>
+    </div>
+  <div class='col s6 offset-s1'>
+  <div id= 'ans2Desc'>
+  </div>
+</div>
+</div>
+  <div class='row'>
+    <h4>What are the most popular complaints? </h4>
+
+    <div id="chart-container"></div>
+  </div>
+  </div>
+
+
+
+<div>
+  <h4>Matt's Top 5 Favorite Complaints </h4> <br>
+</div>
+
+<div class="row">
+<h4> Honorable Mention: </h4>
+<h5> 16 complaints about: </h5>
+<div id= 'ansH'>
+</div>
+<div id = 'ansHPic'> </div>
+<button id= 'butt3' class="btn waves-effect waves-light" type="submit" name="action">Honor me
+   <i class="material-icons right"></i>
+ </button>
+</div>
+<div>
+
+
+<h4> 5. </h4> <h5> One complaint about: </h5>
+<div id= 'ans4Desc'>
+</div>
+<div id= 'ans4Pic'>
+
+</div>
+<button id= 'butt4' class="btn waves-effect waves-light" type="submit" name="action">5
+   <i class="material-icons right"></i>
+ </button>
+
+<h4> 4. </h4> <h5> Thirty complaints about: </h5>
+<div id= 'ans5Desc'>
+</div>
+<div id= 'ans5Pic'>
+
+</div>
+<button id= 'butt5' class="btn waves-effect waves-light" type="submit" name="action">4
+   <i class="material-icons right"></i>
+ </button>
+
+
+<h4> 3. </h4> <h5> Two complaints about: </h5>
+<div id= 'ans6Desc'>
+</div>
+<div id= 'ans6Pic'>
+
+</div>
+<button id= 'butt6' class="btn waves-effect waves-light" type="submit" name="action">3
+   <i class="material-icons right"></i>
+ </button>
+
+
+<h4> 2. </h4> <h5> Nine complaints about: </h5>
+<div id= 'ans7Desc'>
+</div>
+<div id= 'ans7Pic'>
+
+</div>
+<button id= 'butt7' class="btn waves-effect waves-light" type="submit" name="action">2
+ </button>
+
+
+<h4> 1. </h4> <h5> Nine complaints about: </h5>
+<div id= 'ans8Desc'>
+</div>
+<div id= 'ans8Pic'>
+
+</div>
+<button id= 'butt8' class="btn waves-effect waves-light" type="submit" name="action">1
+   <i class="material-icons right"></i>
+ </button>
+
+
+</div>
+<br>
+<input type="button" value="Reset" onClick="window.location.reload()">
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.css">
+    <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  <script type="text/javascript" src="stats.js"></script>
+  <script type="text/javascript" src="src/models/ZipCode.js"></script>
+  </body>
+</html>
