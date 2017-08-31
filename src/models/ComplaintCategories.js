@@ -2,7 +2,7 @@ class ComplaintCategories {
   constructor(){}
   static getGroupedComplaints() {
     $.ajax({
-      url: 'http://localhost:3000/api/v1/complaints/grouped',
+      url: 'https://rats-api.herokuapp.com/api/v1/complaints/grouped',
       success: function(data) {
         populateDropDown(data)
       }
