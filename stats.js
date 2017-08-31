@@ -3,7 +3,7 @@ $(document).ready(function(){
     event.preventDefault()
     const guess = $('input[name=tcomplaints]').val()
     $.ajax({
-      url: 'http://localhost:3000/api/v1/boroughs',
+      url: 'https://rats-api.herokuapp.com/api/v1/boroughs',
       success: function(data){
         var total = 0
         data.forEach(function(borough){
@@ -23,7 +23,7 @@ $(document).ready(function(){
     event.preventDefault()
     const guess2 = $('input[name=bcomplaints]').val()
     $.ajax({
-      url: 'http://localhost:3000/api/v1/boroughs',
+      url: 'https://rats-api.herokuapp.com/api/v1/boroughs',
       success : function(data){
         const complaints = data.map(function(borough){
           var boro = {
@@ -76,7 +76,7 @@ $(document).ready(function(){
           }
 
     $.ajax({
-      url: 'http://localhost:3000/api/v1/complaints/grouped',
+      url: 'https://rats-api.herokuapp.com/api/v1/complaints/grouped',
       success : function(data){
           readyChart(data)
         }
